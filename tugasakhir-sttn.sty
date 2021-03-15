@@ -1,0 +1,215 @@
+%=====================================================
+% Package .sty Laporan Tugas Akhir STTN-BATAN Yogyakarta
+% Created and Arranged by :
+% Abdurrohman Ibnul Mufadlol - 031700012
+% email : ibnulmufadlol@gmail.com
+% Created at : 2021
+%=====================================================
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,lmodern}
+%\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{lscape}
+\usepackage{listings}
+\usepackage{booktabs,multirow}%create table with multirow option
+\usepackage[table]{xcolor}
+\usepackage{etoolbox}%programming tools for AtBeginEnvironment
+\usepackage{bm}%use boldmath in lowercase greek letters
+\usepackage{mathrsfs}%enables /mathscr command (special font)
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}%enables hyperlink for every citation aand label
+\usepackage{url}
+\usepackage[round]{natbib}%Bibliography package
+\usepackage[bahasai]{babel}
+
+%Nomenclature (Abbreviations and Symbols)
+\usepackage[refpage]{nomencl}
+\renewcommand{\nomname}{DAFTAR SINGKATAN DAN LAMBANG}
+\makenomenclature
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{
+	\ifstrequal{#1}{L}{\item[\textbf{Lambang}]}{%
+		\ifstrequal{#1}{S}{\vspace{2em} \item[\textbf{Singkatan}]}{}}%
+}
+
+\renewcommand{\pagedeclaration}[1]{, hlm. #1}
+\setlength{\nomitemsep}{-1cm}
+
+%Bibliography format
+\setlength{\bibhang}{0.5in}
+\bibliographystyle{FinalProjectBibStyle}
+\setlength{\bibsep}{0cm}
+
+%debugging
+%\usepackage{showframe}
+%\usepackage{layout}
+
+%Set main font to Times New Roman
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+
+%Add dot after chapter in table of contents
+\usepackage[titles]{tocloft}
+\renewcommand\cftchapdotsep{\cftdotsep}
+
+%Set enumerate indentation
+\usepackage{indentfirst}
+\usepackage{enumerate}
+\usepackage{paralist}
+\setdefaultleftmargin{15pt}{}{}{}{}{}
+\usepackage{enumitem}
+\setlist{nosep}
+
+%Margin
+\usepackage[top=3cm,left=4cm,right=3cm,bottom=3cm]{geometry}
+
+%Paragraph spacing
+\usepackage{parskip}
+\usepackage{setspace}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.4em}
+\allowdisplaybreaks
+\renewcommand{\baselinestretch}{2.0}
+%\AtBeginEnvironment{onespace}{\singlespacing}
+
+%Page numbering
+\usepackage{fancyhdr}
+\fancyhf{}
+\cfoot{\thepage}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{40pt}
+
+%tabel dan gambar
+\usepackage{float}
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+%Section spacing
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-40pt}{0pt}
+\titlespacing*{\section}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing*{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\chapter}[display]{\center \normalfont\centering\large\bfseries}{\chaptertitlename\ \thechapter}{1em}{}{}
+\titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{1em}{}{}
+\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{1em}{}{}
+\titleformat{\subsubsection}[hang]{\normalfont\itshape\bfseries}{\thesubsubsection}{1em}{}{}
+
+\raggedbottom
+
+%Indexing
+\usepackage{makeidx}
+\makeindex
+
+%renewcommand
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\addChapter}[1]{\phantomsection \addcontentsline{toc}{chapter}{#1}}
+%Renewcommand for chapter name
+\addto\captionsbahasai{
+	\renewcommand{\chaptername}{BAB}
+}	
+%\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\appendixname}{Lampiran}
+%\renewcommand{\indexname}{INDEKS}
+%\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\setcounter{secnumdepth}{5}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\AtBeginDocument{\renewcommand\indexname{INDEKS}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\Alph{subsubsection}.}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+%Renewcommand for Table of Contents title if using babel for Indonesian
+\addto\captionsbahasai{
+	\renewcommand{\contentsname}{DAFTAR ISI}
+}
+\addto\captionsbahasai{
+	\renewcommand{\listfigurename}{DAFTAR GAMBAR}
+}
+\addto\captionsbahasai{
+	\renewcommand{\listtablename}{DAFTAR TABEL}
+}
+%Renewcommand for bibliography name if using babel for Indonesian
+\addto{\captionsbahasai}{
+	\renewcommand{\bibname}{DAFTAR PUSTAKA}
+}
+
+%Add spacing to table of contents
+\usepackage{tocloft}
+\addtolength{\cftchapnumwidth}{7pt}
+\addtolength{\cftsecnumwidth}{5pt}
+\addtolength{\cftsubsecindent}{5pt}
+
+%set \singlespacing on tabular env
+\makeatletter
+\AtBeginEnvironment{tabular}{%
+	\def\baselinestretch{1}\@currsize}%
+\makeatother
+
+%listingstyle
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%Redefine text before chapter number
+\makeatletter
+\let\orig@chapter\@chapter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+	\if@mainmatter
+	\refstepcounter{chapter}%
+	\typeout{\@chapapp\space\space\thechapter.}%
+	\addcontentsline{toc}{chapter}%
+	{BAB~\protect\numberline{\thechapter}#1}%
+	\else
+	\addcontentsline{toc}{chapter}{#1}%
+	\fi
+	\else
+	\addcontentsline{toc}{chapter}{#1}%
+	\fi
+	\chaptermark{#1}%
+	\addtocontents{lof}{\protect\addvspace{10\p@}}%
+	\addtocontents{lot}{\protect\addvspace{10\p@}}%
+	\if@twocolumn
+	\@topnewpage[\@makechapterhead{#2}]%
+	\else
+	\@makechapterhead{#2}%
+	\@afterheading
+	\fi}
+\makeatother
+
+%Add word 'Table' and 'Figure' in List of Table and Figure
+\renewcommand{\cftfigpresnum}{Gambar\ }
+\renewcommand{\cfttabpresnum}{Tabel\ }
+\newlength{\mylenf}
+\settowidth{\mylenf}{\cftfigpresnum}
+\setlength{\cftfignumwidth}{\dimexpr\mylenf+1.5em}
+\setlength{\cfttabnumwidth}{\dimexpr\mylenf+1.5em}
